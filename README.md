@@ -1,3 +1,11 @@
+# Hi, I'm Marwa Rashwan 👋 
+### Mechatronics Engineer & Technical Project Manager
+
+- 🎓 Fresh Graduate in Electrical Engineering (Mechatronics) from Canadian University Dubai
+- 🔭 Currently managing STEM & AI initiatives at Edutech
+- 🛠️ Core Focus: Autonomous Control Systems, ROS 2, Embedded Systems (Arduino, Raspberry Pi, PLC), & AI/ML
+
+
 About me:
 Graduate Electrical Engineer (Fresh) from Canadian University Dubai specializing in Mechatronics, Embedded Systems and Industrial Automation.
 
