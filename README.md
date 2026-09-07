@@ -92,7 +92,7 @@ This project bridges mechanical energy harvesting, dynamic power electronics, em
 
 ---
 
-## 🔬 Phase 1: Physical Harvesting & Adaptive Impedance Matching (AIM)
+🔬 Phase 1: Physical Harvesting & Adaptive Impedance Matching (AIM)
 
 In traditional piezoelectric energy harvesters, nonlinear mechanical-electrical dynamics cause severe power drops when step cadence or body weight varies. To resolve this, an Adaptive Impedance Matching (AIM) algorithm was formulated and validated via MATLAB.
 
@@ -105,27 +105,27 @@ AIM Performance Impact:
 
 ---
 
-## 🚀 Phase 2: System Advancement — ESP32 Smart IoT Mechatronics Node
+ 🚀 Phase 2: System Advancement — ESP32 Smart IoT Mechatronics Node
 
 To address the limitations of static hardware prototypes (e.g., lack of remote telemetry, unobservable AIM dynamics, and component wear during testing), the system was upgraded into a full **IoT-connected Smart City Mechatronic Node** simulated in Wokwi and driven by an **ESP32 DevKit V1**.
 
-### 🛠️ Hardware & Embedded Architecture
+ 🛠️ Hardware & Embedded Architecture
 Central Microcontroller:ESP32 DevKit V1 (executes local control logic, display rendering, and Wi-Fi data dispatch).
 Sensor Simulation & Actuation:
 Slide Potentiometer (Pin D32):Simulates dynamic footstep pressure inputs and non-linear mechanical stress.
 Park Streetlight (Pin D13):Current-limited via $220\Omega$ resistor; triggers automatically upon energy threshold detection.
 Local Visual Feedback System:
 ILI9341 TFT Display:Renders real-time telemetry including step count, capacitor voltage, and battery charge level.
-NeoPixel Ring:Provides dynamic, real-time energy visualization (**Red** = Low, **Yellow** = Medium, **Green** = Peak Storage), making the underlying AIM tracking behavior instantly visible.
+NeoPixel Ring:Provides dynamic, real-time energy visualization (Red = Low, Yellow = Medium, Green = Peak Storage), making the underlying AIM tracking behavior instantly visible.
 
-### ☁️ Cloud Connectivity & Bidirectional Control (Adafruit IO)
+ ☁️ Cloud Connectivity & Bidirectional Control (Adafruit IO)
 Wi-Fi Telemetry & MQTT:** Transmits 4 continuous data feeds (Voltage, Step Count, Battery Level, Step Strength) to Adafruit IO.
 Live Analytics:Live line-chart plotting for voltage accumulation with rate-limit protection (1 transmission per 3 seconds).
 Bidirectional Remote Control:Features a cloud-side **Remote Reset Switch** that clears local hardware step counters and syncs display metrics over Wi-Fi.
 
 ---
 
-## 📊 Key System Advancements (Midterm vs. Final System)
+📊 Key System Advancements (Midterm vs. Final System)
 
 | Feature / Metric | Midterm Prototype | Final Advanced Mechatronics System |
 | :--- | :--- | :--- |
@@ -138,7 +138,7 @@ Bidirectional Remote Control:Features a cloud-side **Remote Reset Switch** that 
 
 ---
 
-## 💡 Practical Smart City Impact
+ 💡 Practical Smart City Impact
 
 1. Modularity & Scalability:** Designed as an independent, low-cost sensor node that can be scaled across urban walkways, transport hubs, and public parks without additional infrastructure.
 2. Simulation-First Engineering:** Rapidly isolates control logic, testing real-world footstep force variations and environmental factors without physical hardware degradation.
