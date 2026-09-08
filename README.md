@@ -145,5 +145,52 @@ Bidirectional Remote Control:Features a cloud-side **Remote Reset Switch** that 
 ```
 https://www.canva.com/design/DAHJHUYjjDU/Q_skyJPyaM1heRoFM90Q0w/edit
 
-
+Case Study #2: GAITH — Grounded Automation Intelligent Technology Harvesting
+WRO 2025 — Future Innovators (Senior)
+ 
+The Problem: Global Water Crisis
+ 
+Water is becoming the world's most precious resource. By 2030, humanity faces a projected 40% shortfall in freshwater as demand rises and climate change worsens scarcity.
+ 
+Agriculture consumes 70% of global freshwater, yet up to 50% is lost through outdated irrigation — trillions of liters wasted each year. Without smarter farming systems, food security in expanding cities will be at risk worldwide.
+ 
+The Solution — GAITH
+ 
+GAITH is a multifunctional urban farming robot designed to tackle water scarcity and food security challenges. It combines IoT sensors, machine learning, and automation to optimize irrigation, monitor soil health, and support efficient crop growth — making farming smarter and more sustainable in urban environments.
+ 
+ How It Works
+ 
+- Smart Irrigation— Delivers precise water amounts, reducing waste.
+- Soil Monitoring — Tracks moisture, salinity, and nutrient levels.
+- Crop Care — Supports growth with timely watering and maintenance.
+ My Contributions
+ 
+I proposed the initial concept for GAITH — framing it as an integrated agricultural system rather than a single-function device — and contributed across the full technical stack:
+ 
+💻 Edge AI & Computer Vision
+Designed and implemented lightweight Python scripts using OpenCV and TensorFlow Lite for edge computing on Raspberry Pi. Built a real-time crop-health monitoring pipeline that cross-references plant discoloration against soil-specific hydration thresholds, using constants pulled from a local Soil Analytics Report.
+ 
+⚡️ Embedded Systems & Sensor Integration
+Set up an Arduino microcontroller system interfacing with a 7-in-1 multi-parametric soil sensor (moisture, NPK nutrients, pH) and climate probes. Configured automatic irrigation timers using servo-controlled fluid valves that respond dynamically to water level sensor readings.
+ 
+⚙️ Mechanical Integration
+Collaborated with a teammate to mount and test a small-scale sub-module chassis, optimized for turning radius and ground clearance suited to restricted urban-farmland topology. Analyzed electrical power and fluid delivery efficiency to inform prototype design decisions.
+ 
+☁️ Cloud Telemetry & IoT Architecture
+Set up a Flask web server on the Raspberry Pi as GAITH's telemetry gateway, and implemented secure MQTT data transfer linking hardware sensors to a real-time dashboard for predictive crop-stress analysis.
+ 
+📑 System Documentation
+Supported the documentation of GAITH's development — including prototype iteration records, comparison matrices (structural weight reduction, dual-pump system transition), and the final Innovation Framework — helping keep the project's technical decisions and progress clearly recorded across iterations.
+ 
+👩🏻‍💻 Architecture & Framework
+Developed the architectural flowchart for the GAITH Innovation Framework, defining a **Sense → Decide → Act** control loop — distinguishing GAITH from single-utility commercial competitors that address only one part of the farming process.
+ 
+✨ Impact
+ 
+- GAITH helps conserve water, reduce agricultural waste, and strengthen food security in urban environments.
+- Locally, it supports the UAE's sustainability goals and vision.
+GAITH is not just a robot — it is a step toward feeding cities sustainably in a water-scarce world.
+ 
+<img width="1024" height="1536" alt="WhatsApp Image 2025-08-16 at 17 50 09" src="https://github.com/user-attachments/assets/1093b111-4bbd-4f82-b7a5-5bd012d452a9" />
+<img width="1280" height="880" alt="WhatsApp Image 2025-08-13 at 22 41 13" src="https://github.com/user-attachments/assets/9951cf40-0ead-4893-a09f-0bbf34e49c39" />
 
