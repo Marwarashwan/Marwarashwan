@@ -145,8 +145,7 @@ Bidirectional Remote Control:Features a cloud-side **Remote Reset Switch** that 
 ```
 https://www.canva.com/design/DAHJHUYjjDU/Q_skyJPyaM1heRoFM90Q0w/edit
 
-Case Study #2: GAITH — Grounded Automation Intelligent Technology Harvesting
-WRO 2025 — Future Innovators (Senior)
+Case Study #2: GAITH — Grounded Automation Intelligent Technology Harvesting WRO 2025 — Future Innovators (Senior)
  
 The Problem: Global Water Crisis
  
