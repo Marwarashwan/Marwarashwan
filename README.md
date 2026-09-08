@@ -316,13 +316,14 @@ Developed the architectural flowchart for the GAITH Innovation Framework, defini
 GAITH is not just a robot — it is a step toward feeding cities sustainably in a water-scarce world.
  
 
+![GAITH Rover Overview](E52B75AB-41F6-49AE-96FC-5132DA313624.jpeg)
+
+![Circuit Schematic](20DC4415-39D7-44C6-AE9A-FCF7A87201FC.jpeg)
 
 
 
 
 
-<img width="1530" height="1050" alt="Screenshot 2026-09-08 at 11 08 38 am" src="https://github.com/user-attachments/assets/c7e68235-ccba-4ab5-95f9-d22fdd15796f" />
-<img width="702" height="1050" alt="Screenshot 2026-09-08 at 11 09 10 am" src="https://github.com/user-attachments/assets/8f23ccba-d58f-417f-99c4-8ae38eb3d7d9" />
 
 
 
