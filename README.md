@@ -321,8 +321,9 @@ GAITH is not just a robot — it is a step toward feeding cities sustainably in 
 
 
 
-<img width="1280" height="880" alt="WhatsApp Image 2025-08-13 at 22 41 13" src="https://github.com/user-attachments/assets/b64b4060-5396-4c67-8783-a89181f34a77" />
-<img width="1024" height="1536" alt="WhatsApp Image 2025-08-16 at 17 50 09" src="https://github.com/user-attachments/assets/41321280-79e8-4e4a-83eb-eed7362310ea" />
+<img width="1530" height="1050" alt="Screenshot 2026-09-08 at 11 08 38 am" src="https://github.com/user-attachments/assets/c7e68235-ccba-4ab5-95f9-d22fdd15796f" />
+<img width="702" height="1050" alt="Screenshot 2026-09-08 at 11 09 10 am" src="https://github.com/user-attachments/assets/8f23ccba-d58f-417f-99c4-8ae38eb3d7d9" />
+
 
 
 
