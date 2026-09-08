@@ -315,7 +315,8 @@ Developed the architectural flowchart for the GAITH Innovation Framework, defini
 - Locally, it supports the UAE's sustainability goals and vision.
 GAITH is not just a robot — it is a step toward feeding cities sustainably in a water-scarce world.
  
-<img width="1280" height="880" alt="WhatsApp Image 2025-08-13 at 22 41 13" src="https://github.com/user-attachments/assets/d996b1f9-9b51-4cab-9bda-98dc663254f2" />
-<img width="1024" height="1536" alt="WhatsApp Image 2025-08-16 at 17 50 09" src="https://github.com/user-attachments/assets/91fafa12-640f-4b4c-8ba5-c81c401c9a35" />
+<img width="1024" height="1536" alt="E52B75AB-41F6-49AE-96FC-5132DA313624" src="https://github.com/user-attachments/assets/180c4bca-f002-471b-ae3b-68e967518ba7" />
+<img width="1280" height="880" alt="20DC4415-39D7-44C6-AE9A-FCF7A87201FC" src="https://github.com/user-attachments/assets/dcf7d58b-c75f-461f-b433-aefe3658ccc9" />
+
 
 
