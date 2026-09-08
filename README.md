@@ -58,7 +58,7 @@ You can use this Markdown snippet directly on your **GitHub Repository README** 
 
 ---
 
-```markdown
+
 # ⚡ Smart Piezoelectric Energy Harvesting Walkway: From Physics to IoT-Enabled Smart City Node
 
 > **IEEE Research Paper:** *Comparative Study of Fixed and Adaptive Impedance Matching for Piezoelectric Smart-Pavements: Powering Integrated Pathway Illumination on Viscoelastic Surfaces*  
@@ -267,8 +267,12 @@ Bidirectional Remote Control:Features a cloud-side **Remote Reset Switch** that 
 2. Simulation-First Engineering:Rapidly isolates control logic, testing real-world footstep force variations and environmental factors without physical hardware degradation.
 3. Data-Driven Maintenance:Enables municipal engineers to remotely monitor structural foot-traffic density and harvesting efficiency in real time from a central cloud server.
 
-```
+
 https://www.canva.com/design/DAHJHUYjjDU/Q_skyJPyaM1heRoFM90Q0w/edit
+
+<img width="1280" height="880" alt="WhatsApp Image 2025-08-13 at 22 41 13" src="https://github.com/user-attachments/assets/b50e7b47-43c0-4d47-9897-7f943dc0d63e" />
+<img width="1024" height="1536" alt="WhatsApp Image 2025-08-16 at 17 50 09" src="https://github.com/user-attachments/assets/794062bd-9ea8-43bb-b6cb-79331b1648a4" />
+
 
 Case Study #2: GAITH — Grounded Automation Intelligent Technology Harvesting WRO 2025 — Future Innovators (Senior)
  
@@ -333,6 +337,10 @@ This subsystem was one of the most rewarding parts of the build — it's a small
 
 More to come on the 5-DOF robotic arm and full rover integration 👇
 
+<img width="1120" height="837" alt="Screenshot 2025-10-06 at 3 32 34 PM" src="https://github.com/user-attachments/assets/3b8e8643-de4f-4da1-8432-7495bd5832f0" />
+<img width="646" height="203" alt="Screenshot 2025-09-08 at 3 27 44 PM" src="https://github.com/user-attachments/assets/4e5f4ea4-e991-4e30-a178-9afed7a448b5" />
+<img width="1280" height="748" alt="PHOTO-2025-09-11-23-32-19" src="https://github.com/user-attachments/assets/2d1e7f14-556e-4e44-b892-2d542322affe" />
+<img width="1280" height="1024" alt="PHOTO-2025-09-08-16-27-00" src="https://github.com/user-attachments/assets/74f2d390-ca8e-4aa8-baa2-c7093354e211" />
 
 
 
