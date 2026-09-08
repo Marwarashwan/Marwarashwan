@@ -116,8 +116,8 @@ Local Visual Feedback System:
 ILI9341 TFT Display:Renders real-time telemetry including step count, capacitor voltage, and battery charge level.
 NeoPixel Ring:Provides dynamic, real-time energy visualization (Red = Low, Yellow = Medium, Green = Peak Storage), making the underlying AIM tracking behavior instantly visible.
 
- ☁️ Cloud Connectivity & Bidirectional Control (Adafruit IO)
-Wi-Fi Telemetry & MQTT:** Transmits 4 continuous data feeds (Voltage, Step Count, Battery Level, Step Strength) to Adafruit IO.
+☁️ Cloud Connectivity & Bidirectional Control (Adafruit IO)
+Wi-Fi Telemetry & MQTT:Transmits 4 continuous data feeds (Voltage, Step Count, Battery Level, Step Strength) to Adafruit IO.
 Live Analytics:Live line-chart plotting for voltage accumulation with rate-limit protection (1 transmission per 3 seconds).
 Bidirectional Remote Control:Features a cloud-side **Remote Reset Switch** that clears local hardware step counters and syncs display metrics over Wi-Fi.
 
@@ -138,9 +138,9 @@ Bidirectional Remote Control:Features a cloud-side **Remote Reset Switch** that 
 
  💡 Practical Smart City Impact
 
-1. Modularity & Scalability:** Designed as an independent, low-cost sensor node that can be scaled across urban walkways, transport hubs, and public parks without additional infrastructure.
-2. Simulation-First Engineering:** Rapidly isolates control logic, testing real-world footstep force variations and environmental factors without physical hardware degradation.
-3. Data-Driven Maintenance:** Enables municipal engineers to remotely monitor structural foot-traffic density and harvesting efficiency in real time from a central cloud server.
+1. Modularity & Scalability:Designed as an independent, low-cost sensor node that can be scaled across urban walkways, transport hubs, and public parks without additional infrastructure.
+2. Simulation-First Engineering:Rapidly isolates control logic, testing real-world footstep force variations and environmental factors without physical hardware degradation.
+3. Data-Driven Maintenance:Enables municipal engineers to remotely monitor structural foot-traffic density and harvesting efficiency in real time from a central cloud server.
 
 ```
 https://www.canva.com/design/DAHJHUYjjDU/Q_skyJPyaM1heRoFM90Q0w/edit
