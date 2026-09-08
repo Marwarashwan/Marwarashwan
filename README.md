@@ -316,8 +316,27 @@ Developed the architectural flowchart for the GAITH Innovation Framework, defini
 GAITH is not just a robot — it is a step toward feeding cities sustainably in a water-scarce world.
  
 
-<img width="1024" height="1536" alt="E52B75AB-41F6-49AE-96FC-5132DA313624" src="https://github.com/user-attachments/assets/1be4f2c5-6815-4971-b3b4-ee1e70af1978" />
-<img width="1280" height="880" alt="20DC4415-39D7-44C6-AE9A-FCF7A87201FC" src="https://github.com/user-attachments/assets/1f9b8ef5-8677-45b2-a452-c32741feccd6" />
+🔬🚀 Science Box: Automated Sample Collection for our Space Rover
+
+As part of our Space Rover project (alongside a custom-built 5-DOF robotic arm), I designed and built the Science Box — an autonomous drilling and sample-collection subsystem that mimics real planetary exploration hardware.
+
+How it works: 🔩 A stepper-motor-driven drill dock lowers the drill shaft toward the surface, guided by limit switches that mark the exact depth boundary. ⚙️ Once the drill reaches position, a DC motor takes over, spinning the drill shaft to bore down to a 30 cm target depth. 🧪 While drilling, a servo-actuated lid on the sample container stays open, allowing surface and sub-surface material to funnel into a dedicated collection chamber as the shaft cuts through the layers. ⚖️ The collected regolith sample is precisely measured using an HX711 load cell amplifier, calibrated to reliably capture a target mass (e.g. 10 g) even in a vibration-heavy environment — accounting for sensor offset, gain drift, and mechanical noise from the drill and drive motors.
+
+Engineering focus areas:
+
+Non-blocking, priority-based embedded control (limit switches always checked first, ensuring immediate and safe motor cutoff)
+Multi-motor coordination (stepper for positioning, DC motor for drilling, servo for sample containment)
+Precision load-cell calibration for small-mass sensing in noisy mechanical conditions
+Modular subsystem design built to integrate with the rover's broader chassis, robotic arm, and control architecture
+
+This subsystem was one of the most rewarding parts of the build — it's a small-scale example of the kind of automated science payload used on real planetary rovers, and getting the timing, safety interlocks, and sensor calibration right taught me a lot about robust embedded systems design.
+
+More to come on the 5-DOF robotic arm and full rover integration 👇
+<img width="1280" height="748" alt="PHOTO-2025-09-11-23-32-19" src="https://github.com/user-attachments/assets/592131c8-0f54-4c45-95c6-7ecaa4425319" />
+<img width="1280" height="1024" alt="PHOTO-2025-09-08-16-27-00" src="https://github.com/user-attachments/assets/47954dc1-5ace-4edf-914b-08f4cbeaa3bc" />
+<img width="1120" height="837" alt="Screenshot 2025-10-06 at 3 32 34 PM" src="https://github.com/user-attachments/assets/dd922166-bf39-4edb-a92b-0f81a40d702a" />
+<img width="646" height="203" alt="Screenshot 2025-09-08 at 3 27 44 PM" src="https://github.com/user-attachments/assets/d49dc9dc-69ac-45e7-8c4c-f588a795e103" />
+
 
 
 
