@@ -27,14 +27,14 @@ Illumination on Viscoelastic Surfaces
 
 Featured Publication & Research
 
-*Published in **IEEE** | Co-Authored & Presented with Canadian University Dubai Team*
+Published in IEEE | Co-Authored & Presented with Canadian University Dubai Team*
 
 Overview: Designed and developed a smart pedestrian energy-harvesting tile system that converts human footstep kinetic energy into electrical power for sustainable urban lighting.
-Core Innovation:Implemented an **Adaptive Impedance Matching (AIM)algorithm in MATLAB to dynamically optimize electrical load resistance ($30\text{ k}\Omega \text{ to } 200\text{ k}\Omega$) against varying footstep forces and frequencies on viscoelastic surfaces.
+Core Innovation:Implemented an Adaptive Impedance Matching (AIM)algorithm in MATLAB to dynamically optimize electrical load resistance ($30\text{ k}\Omega \text{ to } 200\text{ k}\Omega$) against varying footstep forces and frequencies on viscoelastic surfaces.
 Key Achievements & Impact:
 25–35% Increase in harvested energy efficiency compared to traditional fixed-impedance systems.
 >30% Extension in LED pathway illumination time.
-28.5% Tile Reduction:** Lowered the required tile count from 28 to 20 tiles for pathway lighting, achieving a net installation cost saving of **~580 AED per unit** under UAE infrastructure costing models.
+28.5% Tile Reduction: Lowered the required tile count from 28 to 20 tiles for pathway lighting, achieving a net installation cost saving of **~580 AED per unit under UAE infrastructure costing models.
 Tech Stack: MATLAB (AIM Simulation & Modeling), 2D/3D CAD (AutoCAD/SolidWorks), Piezoelectric Transducers, Power Electronics (Full-Wave Bridge Rectification, Signal Conditioning, Capacitive Storage), Prototyping.
 
 ---
