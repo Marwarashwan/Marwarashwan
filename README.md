@@ -89,8 +89,6 @@ Key Achievements & Impact:
 Tech Stack: MATLAB (AIM Simulation & Modeling), 2D/3D CAD (AutoCAD/SolidWorks), Piezoelectric Transducers, Power Electronics (Full-Wave Bridge Rectification, Signal Conditioning, Capacitive Storage), Prototyping.
 
 ---
-<img width="1472" height="704" alt="PHOTO-2026-01-30-17-56-35" src="https://github.com/user-attachments/assets/bd6a50da-8857-43bc-8f67-a707115b2d3e" />
-<img width="899" height="874" alt="047DC596-4FF5-4681-B9CA-C1B6E8FF6CAB_1_105_c" src="https://github.com/user-attachments/assets/99d5a9b5-2bd9-480a-b1c3-1ba159231224" />
 
  ⚡ Smart Piezoelectric Energy Harvesting Walkway: From Physics to IoT-Enabled Smart City Node
 
