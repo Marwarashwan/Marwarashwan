@@ -336,7 +336,7 @@ More to come on the 5-DOF robotic arm and full rover integration 👇
 
 
 
-** <img width="1280" height="748" alt="PHOTO-2025-09-11-23-32-19" src="https://github.com/user-attachments/assets/986816ab-ef71-4b3f-b44f-184db543703e" /> **
+
 
 
 
