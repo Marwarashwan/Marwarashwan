@@ -994,6 +994,32 @@ if __name__ == "__main__":
 
 https://drive.google.com/drive/folders/1EyuNtq7RZq964N6GeBAfjuCYEUS0A0SB?usp=drive_link
 
+# Mini Projects:
+## JumpMan Game 🕹️ - OLED Arduino Runner Game
+Side-scroller game that is interactive and retro, developed, programmed and rendered with the U8g2 graphics library to the 0.96" SSD1306 OLED display for the Arduino Uno microcontroller. Features include real time obstacle generation, custom state driven character animation, collision detection, interrupt controlled user input and real time score tracking.
+
+## Technical Overview
+Programming: C/C++
+
+Display Interfacing: 0.96" I2C Monochrome OLED (128x64 resolution, SSD1306 controller) with U8g2lib library
+
+Input Management: Hardware Interrupt (INT0 / Pin 2) falling edge, low latency jump detection with debouncing function.
+
+## Game Engine Mechanics:
+
+This is a procedural terrain generator which runs on real-time by shifting the arrays.
+
+A number of states have given a parabolic jump trajectory physics.
+
+Real-time bounding-box collision detection and avoidance.
+
+All rendering is double buffered by default and uses a standard sendBuffer()
+
+
+https://drive.google.com/drive/folders/1ceytcDmY1UAn5KLfDPXkrkF4eAEmAagk?usp=drive_link
+<img width="800" height="618" alt="Screenshot 2025-06-30 at 12 08 52 PM" src="https://github.com/user-attachments/assets/ec1cd2e2-a779-40d9-993d-3727bcf9dfea" />
+<img width="592" height="355" alt="Arduino-Wiring-for-Connecting-SPI-OLED-Display-Module" src="https://github.com/user-attachments/assets/6e00d009-890b-42db-b7be-5911bb40eb8e" />
+<img width="452" height="339" alt="Screenshot 2026-09-10 at 10 20 14 am" src="https://github.com/user-attachments/assets/0ccfaab2-d369-4640-853c-3afdb68f8729" />
 
 
 
