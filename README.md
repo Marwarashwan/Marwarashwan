@@ -469,8 +469,8 @@ import logging
 
 class RoverArm:
     """5-DOF Rover Arm Controller"""
-
-    def __init__(self, port: str = '/dev/ttyUSB0', baudrate: int = 115200, log_level: str = 'INFO'):
+```cpp
+ def __init__(self, port: str = '/dev/ttyUSB0', baudrate: int = 115200, log_level: str = 'INFO'):
         self.port = port
         self.baudrate = baudrate
         self.serial_conn: Optional[serial.Serial] = None
@@ -988,6 +988,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+```
+   
 
 
 
