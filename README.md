@@ -318,7 +318,7 @@ Developed the architectural flowchart for the GAITH Innovation Framework, defini
 GAITH is not just a robot — it is a step toward feeding cities sustainably in a water-scarce world.
  
 
-🔬🚀 Science Box: Automated Sample Collection for our Space Rover
+Case Study #3: 🔬🚀 Science Box: Automated Sample Collection for our Space Rover
 
 As part of our Space Rover project (alongside a custom-built 5-DOF robotic arm), I designed and built the Science Box — an autonomous drilling and sample-collection subsystem that mimics real planetary exploration hardware.
 
@@ -342,9 +342,648 @@ More to come on the 5-DOF robotic arm and full rover integration 👇
 
 
 
+Case Study #4:🦾⚙️ 5DOF SPACE ROVER ROBOTIC ARM 
+1.1 Mission context
+Mars and the Moon are among the most exciting planetary environments that humanity is
+exploring. The key to these missions are surface-dwelling mobile platforms, or
+medium-to-large exploration rovers similar to Curiosity and Perseverance. These vehicles
+heavily depend on the use of robotic manipulators in order to interact with these alien
+environments in a scientific way.
+The focus of this project is the detailed design, modeling, and prototyping of a robotic arm
+system for spacecraft robotic arm integration on a space rover platform. As for operation, the
+manipulator is envisioned to be attached to a rover body in an extremely unpredictable terrain
+mesh. The main task for the arm is to make fine multi-axis manipulations, travel a very
+complicated kinematic workspace and precision sampling. These involve removing abrasive
+dust layers, collecting irregular shapes of geology (regolith samples), and placing selected
+artifacts in a safe position on the rover to be analyzed on board.
+1.2 Problem Statement
+Although dramatic advances have been made in space robotics, current planetary
+manipulators are severely restricted in their ability to perform missions, which negatively
+impacts mission efficiency and scientific return. These constraints are a result of a
+combination of environmental stresses, mechanical constraints, and telecommunication
+constraints:
+● Dexterity and Manipulation Performance is poor: Traditional robotic arms tend to
+be physically inflexible and less intelligent in terms of manipulation of a variety of
+morphologies that are not calibrated. High-level algorithms and good mechanical
+dexterity are needed to process geological samples that are not regularly shaped.
+These are essential, if not for the autonomous operation, then certainly for the
+operation as a whole.
+● Tight Onboard Resource Bottlenecks: The planetary rover payload is constrained by
+launch vehicle limits. They are powered by a limited supply of electrical power from
+either a restrained solar array or a Radioisotope Thermoelectric Generator (RTG).
+Each computational loop, each movement of actuators, has to be as energy intensive
+as possible so that the rovers' power reserves are not depleted, and there must be a
+high level of fault tolerance, as manual repair is absolutely unfeasible.
+● Extreme Communication Delay: Due to the finite speed of light, communication to
+and from a deep space mission is constrained by its significant round-trip
+communication delays. For Mars, this latency is up to 20 minutes, making real-time
+teleoperation from Earth impossible. This means that the arm must be extremely
+autonomous, have decision-making capabilities on board, and also have
+error-recovery mechanisms on board.
+
+All these constraints must be met as a system that is coordinated, mechanical in design, smart
+in control logic, and environmentally compliant.
+1.3 Scope Of Simulation and Development
+One of the most important steps in this process of engineering development is the link
+between mathematical theory and actual deployment, which is accomplished via
+computational validation. Hyper-realistic physics rendering software suites, such as NVIDIA
+Isaac Sim, are generally high fidelity, meaning they simulate physical interactions with
+incredible realism, but they're dependent on high-end graphics equipment (the NVIDIA RTX
+GPUs) and don't support macOS natively. Likewise, the Robot Operating System (ROS) has
+an unnecessarily steep deployment curve, leading with command-line deployment and added
+software package dependency without contributing directly to embedded hardware efficiency.
+This project relies on a desktop-driven RoboDK simulation environment, seamlessly
+integrated within VS Code using the RoboDK Python API to ensure easy deployment across
+multiple platforms, with a lightweight, deterministic development pipeline. RoboDK offers
+an elegant, mathematically precise platform to model the manipulator kinematics, define
+workspace envelopes, and visualize interaction with the targets without undue computational
+burden.
+● Software control loop, trajectory planning, coordinate transformations, and data
+tracking are coded in Python using the VS Code editor. This environment works in
+concert with the RoboDK API via a local TCP/IP port to visually test joint paths,
+simulate planetary conditions, and prevent possible collisions of the hardware before
+it is physically installed.
+● The second simulation component, the hardware prototyping vector, is a direct design
+that puts the logic directly into low-level embedded hardware, which is quite different
+from the high-level simulation frameworks that isolate logic within virtual
+environments. The high-level algorithms and coordinate maps that are validated in
+Python are converted to a small and efficient C++ program that runs on an Arduino
+microcontroller. This configuration directly controls the motor drivers, physical
+actuators, and positional feedback sensors of a lab-scale prototype. This way the
+system won't violate the strict computations, efficiency, and power conservation
+requirements of a real space rover.
+
+Results, Final Design & software implementation
+A 5-DOF robotic arm is modeled in SolidWorks and displayed in an extended position. With
+a rise from the base to the tip:
+The first joint allows the entire arm to pivot side to side and is attached to a flat mounting
+plate called the base. To its right is a probe-like tip protruding from a thin, dark cylinder with
+a gear on it; this appears to be a tool (likely a sensor probe or drill) attached to the bottom of
+the arm, not the end of the gripper.
+Shoulder joint—Partway up the first link there is a joint with a visible gear/pulley stack—this
+is what brings the arm up and down.
+Elbow joint—the second similar joint higher up flexes the arm in combination with the
+shoulder to increase or decrease the reach of the arm.
+Forearms – the long straight tube from the elbow to the wrist is not a joint.
+Wrist – Near the top there's a more complicated housing with some additional smaller gears
+and a blue bracket (probably a circuit board or sensor mount) – this is the wrist joint and
+allows the end of the arm to tilt independently of the rest of the arm.
+Gripper – two curved black jaws at the top are used to grab objects; they open and close.
+The arm, in total, has 5 degrees of freedom: a rotating base joint, 2 lifting/bending joints
+(shoulder and elbow), a wrist joint for fine angle adjusting, and a gripper at the end of the arm
+with what looks like a fixed tool near the base, e.g., for drilling or sampling.
+
+
+<img width="445" height="421" alt="Screenshot 2026-06-29 at 4 45 49 pm" src="https://github.com/user-attachments/assets/75271b12-b029-4c9f-b8c5-f527f250209c" />
+<img width="645" height="569" alt="Screenshot 2026-06-29 at 4 40 48 pm" src="https://github.com/user-attachments/assets/e9f3adee-a4aa-4ad1-b84e-d7c9097235cb" />
+<img width="645" height="723" alt="Screenshot 2026-06-29 at 4 40 27 pm" src="https://github.com/user-attachments/assets/a1c22eda-41d9-4e23-871f-67f2645dc908" />
+<img width="645" height="723" alt="Screenshot 2026-06-29 at 4 39 42 pm" src="https://github.com/user-attachments/assets/4e28b538-f18c-43a6-af4d-90a9b90d0554" />
+
+
+# ROVER ARM CODE
+#!/usr/bin/env python3
+"""
+5-DOF Space Rover Robotic Arm - Python Interface
+Joints: Base Rotation, Shoulder, Elbow, Wrist Pitch, Gripper
+Talks to a microcontroller (Arduino/Teensy/etc.) over serial.
+"""
+
+import serial
+import time
+import json
+import threading
+import re
+from typing import List, Dict, Optional
+from datetime import datetime
+import logging
+
+
+class RoverArm:
+    """5-DOF Rover Arm Controller"""
+
+    def __init__(self, port: str = '/dev/ttyUSB0', baudrate: int = 115200, log_level: str = 'INFO'):
+        self.port = port
+        self.baudrate = baudrate
+        self.serial_conn: Optional[serial.Serial] = None
+
+        logging.basicConfig(
+            level=getattr(logging, log_level.upper()),
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            handlers=[
+                logging.FileHandler('rover_arm.log'),
+                logging.StreamHandler()
+            ]
+        )
+        self.logger = logging.getLogger(__name__)
+
+        # 5 joints — Wrist Roll removed compared to the 6-DOF original
+        self.joint_names = [
+            "Base Rotation",   # 1
+            "Shoulder",        # 2
+            "Elbow",           # 3
+            "Wrist Pitch",     # 4
+            "Gripper",         # 5
+        ]
+        self.joint_ids = [1, 2, 3, 4, 5]
+
+        self.joint_limits = {
+            0: (0, 4095),      # Base - full rotation
+            1: (1024, 3072),   # Shoulder - 90 deg range
+            2: (1024, 3072),   # Elbow - 90 deg range
+            3: (1024, 3072),   # Wrist Pitch - 90 deg range
+            4: (2048, 3072),   # Gripper - open/close
+        }
+
+        # Mission-relevant presets instead of generic demo poses
+        self.positions = {
+            "stowed":   [2048, 2048, 2048, 2048, 2048],  # launch/travel config
+            "deploy":   [2048, 1536, 2560, 2048, 2560],  # arm extended, ready to work
+            "sample":   [2048, 1024, 1536, 2560, 2560],  # scoop/drill into soil
+            "stow_in":  [2048, 2048, 2048, 2048, 2048],  # retract after sampling
+            "inspect":  [3072, 2048, 2048, 1536, 2048],  # camera/spectrometer pose
+            "calibrate":[2048, 2048, 2048, 2048, 2048],
+        }
+
+        self.current_positions = [2048] * 5
+        self.selected_joint = 0
+        self.is_connected = False
+        self.emergency_stop_active = False     # renamed from emergency_stop (bug fix, see below)
+        self.monitoring_active = False
+        self.monitor_thread = None
+        self._lock = threading.Lock()
+
+        # Safety thresholds — checked for real in _check_emergency_conditions()
+        self.max_temperature = 60.0   # deg C
+        self.max_current = 1000       # mA
+        self.max_voltage_drop = 2.0   # V
+        self.command_timeout = 5.0    # s
+
+        self.movement_speed = 50
+        self.movement_delay = 0.1
+
+        self.data_log = []
+        self.max_log_entries = 1000
+
+    # ------------------------------------------------------------------
+    # Connection handling
+    # ------------------------------------------------------------------
+    def connect(self) -> bool:
+        try:
+            self.serial_conn = serial.Serial(self.port, self.baudrate, timeout=1)
+            time.sleep(2)  # let the microcontroller finish its boot/reset
+
+            response = self.send_command("?")
+            if "Not connected" not in response:
+                self.is_connected = True
+                self.logger.info(f"Connected to rover arm at {self.port}")
+                print(f"Connected to rover arm at {self.port}")
+                self.start_monitoring()
+                return True
+            else:
+                self.logger.error("Microcontroller not responding")
+                return False
+        except Exception as e:
+            self.logger.error(f"Connection failed: {e}")
+            print(f"Connection failed: {e}")
+            return False
+
+    def disconnect(self):
+        self.stop_monitoring()
+        if self.serial_conn and self.serial_conn.is_open:
+            self.serial_conn.close()
+            self.is_connected = False
+            self.logger.info("Disconnected from rover arm")
+            print("Disconnected from rover arm")
+
+    def cleanup(self):
+        self.disconnect()
+        if self.data_log:
+            self.export_log("final_rover_arm_log.json")
+            self.logger.info("Final log saved")
+        print("Cleanup completed")
+
+    def send_command(self, command: str) -> str:
+        """Send a command and read back whatever response arrives within the timeout."""
+        if not self.serial_conn or not self.serial_conn.is_open:
+            return "Not connected"
+
+        try:
+            with self._lock:
+                self.serial_conn.reset_input_buffer()
+                self.serial_conn.write(f"{command}\n".encode())
+
+                response = ""
+                start = time.time()
+                while time.time() - start < self.command_timeout:
+                    if self.serial_conn.in_waiting > 0:
+                        response += self.serial_conn.read(self.serial_conn.in_waiting).decode(errors="replace")
+                        # small settle window in case more bytes are still arriving
+                        time.sleep(0.02)
+                        if self.serial_conn.in_waiting == 0:
+                            break
+                    else:
+                        time.sleep(0.01)
+                return response.strip()
+        except Exception as e:
+            return f"Error: {e}"
+
+    # ------------------------------------------------------------------
+    # Preset positions
+    # ------------------------------------------------------------------
+    def move_to_position(self, position_name: str):
+        if position_name not in self.positions:
+            print(f"Unknown position: {position_name}")
+            return
+        print(f"Moving to {position_name.upper()}...")
+        target = self.positions[position_name]
+        self.smooth_move(target, duration=2.0)
+
+    def stowed(self):
+        self.move_to_position("stowed")
+
+    def deploy(self):
+        self.move_to_position("deploy")
+
+    def sample_mode(self):
+        self.move_to_position("sample")
+
+    def stow_in(self):
+        self.move_to_position("stow_in")
+
+    def inspect_mode(self):
+        self.move_to_position("inspect")
+
+    # ------------------------------------------------------------------
+    # Joint / gripper control
+    # ------------------------------------------------------------------
+    def select_joint(self, joint_num: int):
+        if 1 <= joint_num <= 5:
+            self.selected_joint = joint_num - 1
+            print(f"Selected: {self.joint_names[self.selected_joint]}")
+            response = self.send_command(str(joint_num))
+            print(response)
+        else:
+            print("Invalid joint number. Use 1-5")
+
+    def adjust_joint(self, direction: str, steps: int = 50):
+        if direction in ('+', '-'):
+            idx = self.selected_joint
+            lo, hi = self.joint_limits[idx]
+            delta = steps if direction == '+' else -steps
+            new_pos = self.current_positions[idx] + delta
+            new_pos = max(lo, min(hi, new_pos))  # clamp to joint limits
+            print(f"Moving {self.joint_names[idx]} {direction}{steps} -> {new_pos}")
+            response = self.send_command(f"{direction}{steps}")
+            self.current_positions[idx] = new_pos
+            print(response)
+        else:
+            print("Use '+' or '-' to adjust joint position")
+
+    def open_gripper(self):
+        print("Opening gripper...")
+        self.select_joint(5)
+        self.adjust_joint('-', 100)
+
+    def close_gripper(self):
+        print("Closing gripper...")
+        self.select_joint(5)
+        self.adjust_joint('+', 100)
+
+    # ------------------------------------------------------------------
+    # End-effector tool control (replace with your actual sampling tool)
+    # ------------------------------------------------------------------
+    def start_tool(self):
+        """Activate the end-effector tool (drill/scoop/probe). Replace 'x' with
+        whatever command byte your microcontroller firmware expects."""
+        print("Activating sampling tool...")
+        response = self.send_command("x")
+        print(response)
+
+    def stop_tool(self):
+        print("Deactivating sampling tool...")
+        response = self.send_command("y")
+        print(response)
+
+    # ------------------------------------------------------------------
+    # Safety
+    # ------------------------------------------------------------------
+    def emergency_stop(self):
+        """Hard stop: cut torque on all joints."""
+        print("EMERGENCY STOP!")
+        self.emergency_stop_active = True
+        response = self.send_command("e")
+        print(response)
+
+    def clear_emergency_stop(self):
+        """Re-enable torque after an emergency stop, once it's safe to do so."""
+        self.emergency_stop_active = False
+        response = self.send_command("t")
+        print(response)
+
+    def toggle_torque(self):
+        print("Toggling torque...")
+        response = self.send_command("t")
+        print(response)
+
+    def monitor_systems(self) -> str:
+        response = self.send_command("m")
+        print(response)
+        return response
+
+    def calibrate_arm(self):
+        print("Starting arm calibration...")
+        response = self.send_command("c")
+        print(response)
+
+    def get_status(self) -> str:
+        response = self.send_command("?")
+        print(response)
+        return response
+
+    # ------------------------------------------------------------------
+    # Background monitoring
+    # ------------------------------------------------------------------
+    def start_monitoring(self):
+        if not self.monitoring_active:
+            self.monitoring_active = True
+            self.monitor_thread = threading.Thread(target=self._monitor_loop, daemon=True)
+            self.monitor_thread.start()
+            self.logger.info("Started continuous monitoring")
+            print("Started continuous monitoring")
+
+    def stop_monitoring(self):
+        self.monitoring_active = False
+        if self.monitor_thread:
+            self.monitor_thread.join(timeout=1)
+        self.logger.info("Stopped continuous monitoring")
+        print("Stopped continuous monitoring")
+
+    def _monitor_loop(self):
+        while self.monitoring_active and self.is_connected:
+            try:
+                response = self.send_command("m")
+                if response and "OFFLINE" not in response:
+                    self._log_data("monitor", response)
+
+                if self._check_emergency_conditions(response):
+                    self.emergency_stop()
+                    break
+
+                time.sleep(5)
+            except Exception as e:
+                self.logger.error(f"Monitoring error: {e}")
+                time.sleep(1)
+
+    def _check_emergency_conditions(self, status_response: str) -> bool:
+        """Parse the status string for over-temp / over-current and decide
+        whether to trip the emergency stop. Adjust the regex/keys to match
+        whatever format your firmware actually reports, e.g.:
+        'TEMP:45.2,CURRENT:320,VOLT:11.8'
+        """
+        if not status_response:
+            return False
+        try:
+            temp_match = re.search(r"TEMP:([\d.]+)", status_response)
+            current_match = re.search(r"CURRENT:([\d.]+)", status_response)
+
+            if temp_match and float(temp_match.group(1)) > self.max_temperature:
+                self.logger.warning(f"Over-temperature detected: {temp_match.group(1)}C")
+                return True
+            if current_match and float(current_match.group(1)) > self.max_current:
+                self.logger.warning(f"Over-current detected: {current_match.group(1)}mA")
+                return True
+            return False
+        except Exception as e:
+            self.logger.error(f"Emergency check error: {e}")
+            return False
+
+    def _log_data(self, action: str, data: str):
+        log_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "action": action,
+            "data": data,
+        }
+        self.data_log.append(log_entry)
+        if len(self.data_log) > self.max_log_entries:
+            self.data_log = self.data_log[-self.max_log_entries:]
+
+    # ------------------------------------------------------------------
+    # Persistence
+    # ------------------------------------------------------------------
+    def save_positions(self, filename: str = "rover_arm_positions.json"):
+        try:
+            data = {
+                "timestamp": datetime.now().isoformat(),
+                "positions": self.current_positions,
+                "joint_names": self.joint_names,
+            }
+            with open(filename, 'w') as f:
+                json.dump(data, f, indent=2)
+            print(f"Positions saved to {filename}")
+        except Exception as e:
+            print(f"Failed to save positions: {e}")
+
+    def load_positions(self, filename: str = "rover_arm_positions.json"):
+        try:
+            with open(filename, 'r') as f:
+                data = json.load(f)
+            positions = data.get("positions", self.positions["stowed"])
+            for i, pos in enumerate(positions):
+                if i < len(self.current_positions):
+                    self.current_positions[i] = pos
+            print(f"Positions loaded from {filename}")
+        except Exception as e:
+            print(f"Failed to load positions: {e}")
+
+    def set_speed(self, speed: int):
+        if 1 <= speed <= 100:
+            self.movement_speed = speed
+            print(f"Movement speed set to {speed}")
+        else:
+            print("Speed must be between 1 and 100")
+
+    def get_log(self, entries: int = 10):
+        recent = self.data_log[-entries:] if self.data_log else []
+        print(f"\n=== RECENT LOG ENTRIES (last {len(recent)}) ===")
+        for entry in recent:
+            print(f"{entry['timestamp']} - {entry['action']}: {entry['data'][:100]}")
+        print("=" * 50)
+
+    def export_log(self, filename: str = "rover_arm_log.json"):
+        try:
+            with open(filename, 'w') as f:
+                json.dump(self.data_log, f, indent=2)
+            print(f"Log exported to {filename}")
+        except Exception as e:
+            print(f"Failed to export log: {e}")
+
+    # ------------------------------------------------------------------
+    # Motion
+    # ------------------------------------------------------------------
+    def smooth_move(self, target_positions: List[int], duration: float = 2.0):
+        """Linearly interpolate from current to target positions, actually
+        sending each joint's intermediate value at every step (the original
+        version computed these but never sent them)."""
+        if not self.is_connected:
+            print("Not connected to arm")
+            return
+        if self.emergency_stop_active:
+            print("Emergency stop active - move blocked")
+            return
+        if len(target_positions) != len(self.current_positions):
+            print(f"Expected {len(self.current_positions)} joint values, got {len(target_positions)}")
+            return
+
+        # Clamp targets to joint limits before moving
+        clamped = []
+        for i, pos in enumerate(target_positions):
+            lo, hi = self.joint_limits[i]
+            clamped.append(max(lo, min(hi, pos)))
+
+        print(f"Smooth movement over {duration} seconds...")
+        start_positions = self.current_positions.copy()
+        steps = max(1, int(duration / 0.1))
+
+        for step in range(steps + 1):
+            if self.emergency_stop_active:
+                print("Emergency stop triggered mid-move - aborting")
+                break
+
+            progress = step / steps
+            current_pos = [
+                int(start_positions[i] + (clamped[i] - start_positions[i]) * progress)
+                for i in range(len(clamped))
+            ]
+
+            # Send each joint's interpolated target this tick.
+            # Protocol below is "<joint_id>:<position>" — update to match
+            # whatever your firmware actually parses.
+            for i, pos in enumerate(current_pos):
+                self.send_command(f"{i + 1}:{pos}")
+
+            time.sleep(0.1)
+
+        self.current_positions = clamped
+        self.logger.info(f"Smooth movement completed to {clamped}")
+        print("Smooth movement completed")
+
+    def sequence_playback(self, sequence_name: str):
+        sequences = {
+            "sample_collection": [
+                ("stowed", self.stowed),
+                ("deploy", self.deploy),
+                ("open_gripper", self.open_gripper),
+                ("sample_mode", self.sample_mode),
+                ("start_tool", self.start_tool),
+                ("stop_tool", self.stop_tool),
+                ("close_gripper", self.close_gripper),
+                ("stow_in", self.stow_in),
+                ("stowed", self.stowed),
+            ],
+            "inspection": [
+                ("stowed", self.stowed),
+                ("inspect_mode", self.inspect_mode),
+                ("stowed", self.stowed),
+            ],
+        }
+
+        if sequence_name not in sequences:
+            print(f"Unknown sequence: {sequence_name}")
+            print(f"Available sequences: {list(sequences.keys())}")
+            return
+
+        print(f"Playing sequence: {sequence_name}")
+        for step_name, step_func in sequences[sequence_name]:
+            if self.emergency_stop_active:
+                print("Emergency stop active - aborting sequence")
+                break
+            print(f"  Step: {step_name}")
+            step_func()
+            time.sleep(1)
+        print("Sequence completed")
+
+    def get_arm_status(self) -> Dict:
+        return {
+            "connected": self.is_connected,
+            "emergency_stop_active": self.emergency_stop_active,
+            "monitoring": self.monitoring_active,
+            "current_positions": self.current_positions,
+            "selected_joint": self.selected_joint,
+            "movement_speed": self.movement_speed,
+            "log_entries": len(self.data_log),
+        }
+
+    def show_menu(self):
+        print("\n=== 5-DOF ROVER ARM CONTROL MENU ===")
+        print("Positions: stowed() deploy() sample_mode() stow_in() inspect_mode()")
+        print("Gripper:   open_gripper() close_gripper()")
+        print("Tool:      start_tool() stop_tool()")
+        print("Joints:    select_joint(n) adjust_joint('+'/'-')")
+        print("Safety:    emergency_stop() clear_emergency_stop() toggle_torque()")
+        print("System:    monitor_systems() calibrate_arm() get_status()")
+        print("Sequences: sequence_playback('sample_collection'|'inspection')")
+        print("Data:      save_positions() load_positions() get_log() export_log()")
+        print("=====================================")
+
+
+def main():
+    print("5-DOF Space Rover Arm Control System")
+    print("=====================================")
+
+    ports_to_try = ['/dev/ttyUSB0', '/dev/ttyUSB1', '/dev/ttyACM0', 'COM3', 'COM4', 'COM5']
+
+    arm = None
+    for port in ports_to_try:
+        print(f"Trying {port}...")
+        candidate = RoverArm(port)
+        if candidate.connect():
+            arm = candidate
+            break
+
+    if not arm:
+        print("\nCould not connect to rover arm!")
+        print("Check:")
+        print("1. Microcontroller is connected via USB")
+        print("2. Firmware is uploaded and running")
+        print("3. Correct port name")
+        print("4. User permissions (try: sudo usermod -a -G dialout $USER)")
+        return
+
+    try:
+        arm.show_menu()
+        actions = {
+            '1': arm.stowed, '2': arm.deploy, '3': arm.sample_mode,
+            '4': arm.stow_in, '5': arm.inspect_mode, '6': arm.open_gripper,
+            '7': arm.close_gripper, '8': arm.start_tool, '9': arm.stop_tool,
+            '12': arm.monitor_systems, '13': arm.calibrate_arm,
+            '18': arm.get_status, '19': arm.show_menu,
+        }
+        while True:
+            print("\n0:Exit 1:Stowed 2:Deploy 3:Sample 4:StowIn 5:Inspect "
+                  "6:OpenGrip 7:CloseGrip 8:StartTool 9:StopTool "
+                  "12:Monitor 13:Calibrate 18:Status 19:Menu E:EmergencyStop")
+            choice = input("Choice: ").strip()
+            if choice == '0':
+                break
+            elif choice.lower() == 'e':
+                arm.emergency_stop()
+            elif choice in actions:
+                actions[choice]()
+            else:
+                print("Invalid choice.")
+    except KeyboardInterrupt:
+        print("\nExiting...")
+    finally:
+        arm.cleanup()
+
+
+if __name__ == "__main__":
+    main()
 
 
 
+
+https://drive.google.com/drive/folders/1EyuNtq7RZq964N6GeBAfjuCYEUS0A0SB?usp=drive_link
 
 
 
