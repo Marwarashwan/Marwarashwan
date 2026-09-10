@@ -1274,3 +1274,204 @@ if __name__ == "__main__":
     finally:
         GPIO.cleanup()
 ```
+# SIMON SAYS 💻 - GAMING EVENT - Arduino Memory & Audio Pattern Game
+## Technical Architecture
+Microcontroller Platform: Arduino Uno R3 (ATmega328P)
+
+Input Architecture: 4x Momentary Push Buttons configured with internal pull-up resistors (INPUT_PULLUP), software non-blocking debouncing, and release-wait state machines.
+
+Output Architecture: 4x Colored LEDs driven via digital outputs with current-limiting resistors; 1x Piezo Speaker generating square wave musical tones via standard frequency modulation (tone()).
+
+Randomization: Floating pin analog noise sampling (analogRead(A0)) to seed the pseudo-random generator, ensuring unique sequence generation upon every power cycle.
+
+Timing & Timeout: Non-blocking 5000ms user input window using millis() timing loops to handle inactivity timeouts.
+
+## Core Features & Mechanics1. 
+Audio-Visual Sequence PlaybackEach button and LED is tied to a specific musical note frequency ($G_3$, $A_3$, $B_3$, and $C_4$). 
+
+1. When the sequence advances, the controller flashes the associated LED while concurrently outputting the corresponding tone through the piezo buzzer.
+
+2. Progressive Pattern EngineUpon successfully completing a sequence round, the game appends a new random step (0 to 3) to the sequence array, scaling up to a maximum length of 100 levels.
+  
+3. Failure State & Timeout RecoveryIf an incorrect button is pressed or if the 5-second input timeout elapses, the controller triggers a dedicated failure melody (flashing all LEDs in unison), logs the final level reached to Serial Monitor at 9600 baud, and resets back to Level 1.
+
+```cpp
+// ===== MUSICAL NOTE DEFINITIONS =====
+#define NOTE_C3  131
+#define NOTE_G3  196
+#define NOTE_A3  220
+#define NOTE_B3  247
+#define NOTE_C4  262
+
+// ===== PINS =====
+const int SPEAKER_PIN = 6;
+const int BUTTON_PINS[] = {2, 3, 4, 5};   // Buttons
+const int LED_PINS[] = {8, 9, 10, 11};    // LEDs
+const int TONES[] = {NOTE_G3, NOTE_A3, NOTE_B3, NOTE_C4}; // Pitch per button
+
+// ===== SETTINGS =====
+const int DEBOUNCE_MS = 50;
+const int SEQUENCE_LENGTH = 100;
+const int STEP_DELAY = 500;  // Time each LED stays on during sequence
+
+// ===== GAME VARIABLES =====
+int sequence[SEQUENCE_LENGTH];
+int currentLevel = 0;
+bool gameActive = false;
+
+void setup() {
+  Serial.begin(9600);
+  
+  // Initialize buttons and LEDs
+  for (int i = 0; i < 4; i++) {
+    pinMode(BUTTON_PINS[i], INPUT_PULLUP); // Buttons connected to GND
+    pinMode(LED_PINS[i], OUTPUT);
+    digitalWrite(LED_PINS[i], LOW);
+  }
+
+  pinMode(SPEAKER_PIN, OUTPUT);
+  randomSeed(analogRead(A0)); // Seed random sequence generator
+
+  testAllComponents();
+  welcomeSequence();
+  gameActive = true;
+}
+
+void loop() {
+  if (gameActive) {
+    // Append new random step to sequence
+    sequence[currentLevel] = random(0, 4); 
+    
+    // Play current sequence
+    playSequence();
+
+    // Read player input and evaluate correctness
+    if (!getPlayerInput()) {
+      gameOver();
+    } else {
+      currentLevel++;
+      if (currentLevel >= SEQUENCE_LENGTH) {
+        gameWin();
+      }
+      delay(1000); // Pause between levels
+    }
+  }
+}
+
+void testAllComponents() {
+  Serial.println("Testing all components...");
+  for (int i = 0; i < 4; i++) {
+    digitalWrite(LED_PINS[i], HIGH);
+    tone(SPEAKER_PIN, TONES[i], 200);
+    delay(500);
+    digitalWrite(LED_PINS[i], LOW);
+    noTone(SPEAKER_PIN);
+  }
+}
+
+void playSequence() {
+  Serial.print("Level ");
+  Serial.println(currentLevel + 1);
+  
+  for (int i = 0; i <= currentLevel; i++) {
+    int buttonIndex = sequence[i];
+    digitalWrite(LED_PINS[buttonIndex], HIGH);
+    tone(SPEAKER_PIN, TONES[buttonIndex]);
+    delay(STEP_DELAY);
+    digitalWrite(LED_PINS[buttonIndex], LOW);
+    noTone(SPEAKER_PIN);
+    delay(200);
+  }
+}
+
+bool getPlayerInput() {
+  for (int step = 0; step <= currentLevel; step++) {
+    bool inputReceived = false;
+    unsigned long timeout = millis() + 5000; // 5 second input window
+
+    while (!inputReceived && millis() < timeout) {
+      for (int i = 0; i < 4; i++) {
+        if (digitalRead(BUTTON_PINS[i]) == LOW) { // Button active low
+          delay(DEBOUNCE_MS);
+          while (digitalRead(BUTTON_PINS[i]) == LOW); // Wait for button release
+          
+          // Audio-visual feedback on press
+          digitalWrite(LED_PINS[i], HIGH);
+          tone(SPEAKER_PIN, TONES[i], 200);
+          delay(200);
+          digitalWrite(LED_PINS[i], LOW);
+          noTone(SPEAKER_PIN);
+          
+          if (i != sequence[step]) {
+            return false; // Incorrect input sequence
+          }
+          
+          inputReceived = true;
+          break;
+        }
+      }
+    }
+    
+    if (!inputReceived) {
+      Serial.println("Timeout!");
+      return false; // Input timeout elapsed
+    }
+  }
+  return true;
+}
+
+void welcomeSequence() {
+  Serial.println("Simon Says Game Ready!");
+  for (int i = 0; i < 4; i++) {
+    digitalWrite(LED_PINS[i], HIGH);
+    tone(SPEAKER_PIN, TONES[i], 200);
+    delay(200);
+    digitalWrite(LED_PINS[i], LOW);
+    noTone(SPEAKER_PIN);
+  }
+}
+
+void gameOver() {
+  Serial.print("Game Over at level ");
+  Serial.println(currentLevel + 1);
+
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 4; j++) digitalWrite(LED_PINS[j], HIGH);
+    tone(SPEAKER_PIN, NOTE_C3, 200);
+    delay(200);
+    for (int j = 0; j < 4; j++) digitalWrite(LED_PINS[j], LOW);
+    tone(SPEAKER_PIN, NOTE_G3, 200);
+    delay(200);
+  }
+  noTone(SPEAKER_PIN);
+
+  currentLevel = 0;
+  gameActive = false;
+  delay(1000);
+  welcomeSequence();
+  gameActive = true;
+}
+
+void gameWin() {
+  Serial.println("You Win!");
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      digitalWrite(LED_PINS[j], HIGH);
+      tone(SPEAKER_PIN, TONES[j], 100);
+      delay(100);
+      digitalWrite(LED_PINS[j], LOW);
+      noTone(SPEAKER_PIN);
+    }
+  }
+
+  currentLevel = 0;
+  gameActive = false;
+  delay(1000);
+  welcomeSequence();
+  gameActive = true;
+}
+```
+
+<img width="1312" height="741" alt="Screenshot 2025-07-03 at 10 51 57 AM" src="https://github.com/user-attachments/assets/755c77fd-e1b2-43dd-99ad-a9724838305b" />
+
+https://drive.google.com/drive/folders/12FowygUPu44nWeBRfpdcKDznqO_vq1hH?usp=drive_link
