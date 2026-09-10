@@ -1022,7 +1022,141 @@ https://drive.google.com/drive/folders/1ceytcDmY1UAn5KLfDPXkrkF4eAEmAagk?usp=dri
 <img width="452" height="339" alt="Screenshot 2026-09-10 at 10 20 14 am" src="https://github.com/user-attachments/assets/0ccfaab2-d369-4640-853c-3afdb68f8729" />
 
 
+## THE CODE: USING OLED
+#include <U8g2lib.h>
+#include <Wire.h>
 
+// Initialize OLED display
+U8G2_SSD1306_128X64_NONAME_F_HW_I2C display(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
+
+#define BUTTON_PIN 2
+#define TERRAIN_WIDTH 21
+char terrain[TERRAIN_WIDTH];
+
+#define HERO_X 12 // Fixed horizontal position
+bool buttonPressed = false;
+
+// Hero animation states
+#define RUN1 1
+#define RUN2 2
+#define JUMP1 3
+#define JUMP8 10
+
+void setup() {
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), []{ buttonPressed = true; }, FALLING);
+
+  display.begin();
+  display.clearBuffer();
+  display.setFont(u8g2_font_6x10_tf);
+  display.drawStr(20, 30, "Jumpman Starting...");
+  display.sendBuffer();
+  delay(1000);
+
+  // Initialize empty terrain
+  for (int i = 0; i < TERRAIN_WIDTH; i++) {
+    terrain[i] = ' ';
+  }
+}
+
+void drawHero(int state, bool step) {
+  int y = 32; // Default ground position
+  
+  // Adjust Y position based on jump state
+  if (state >= 5 && state <= 8) y = 16;    // Upper jump
+  else if (state == 4 || state == 9) y = 24; // Mid jump
+
+  // Draw hero (alternates between filled and outline)
+  if (step)
+    display.drawBox(HERO_X, y - 6, 6, 6);  // Filled
+  else
+    display.drawFrame(HERO_X, y - 6, 6, 6); // Outline
+}
+
+void scrollTerrain(bool block) {
+  // Shift terrain left
+  for (int i = 0; i < TERRAIN_WIDTH - 1; i++) {
+    terrain[i] = terrain[i + 1];
+  }
+  // Add new terrain block at end
+  terrain[TERRAIN_WIDTH - 1] = block ? '#' : ' ';
+}
+
+void loop() {
+  static int heroState = RUN1;
+  static int terrainState = 0;
+  static int terrainDuration = 1;
+  static int score = 0;
+  static bool step = false;
+  static bool playing = true;
+
+  display.clearBuffer();
+
+  // Game over screen
+  if (!playing) {
+    display.setCursor(30, 30);
+    display.print("Game Over!");
+    display.setCursor(30, 45);
+    display.print("Score: ");
+    display.print(score / 8);
+    display.sendBuffer();
+    
+    if (buttonPressed) {
+      // Reset game
+      for (int i = 0; i < TERRAIN_WIDTH; i++) terrain[i] = ' ';
+      score = 0;
+      heroState = RUN1;
+      playing = true;
+      buttonPressed = false;
+    }
+    delay(100);
+    return;
+  }
+
+  // Generate terrain
+  scrollTerrain(terrainState == 1);
+
+  if (--terrainDuration <= 0) {
+    terrainState = (terrainState == 0) ? 1 : 0;
+    terrainDuration = 4 + random(5);
+  }
+
+  // Jump input
+  if (buttonPressed && heroState <= RUN2) {
+    heroState = JUMP1;
+    buttonPressed = false;
+  }
+
+  // Collision detection
+  if (terrain[HERO_X / 6] == '#' && !(heroState >= 5 && heroState <= 8)) {
+    playing = false;
+  }
+
+  // Update hero animation
+  heroState++;
+  if (heroState > JUMP8) heroState = RUN1;
+
+  // Draw terrain
+  for (int i = 0; i < TERRAIN_WIDTH; i++) {
+    if (terrain[i] == '#') {
+      display.drawBox(i * 6, 32, 6, 6);
+    }
+  }
+
+  // Draw hero
+  drawHero(heroState, step);
+
+  // Draw score
+  display.setCursor(90, 10);
+  display.print("Score:");
+  display.print(score / 8);
+
+  display.sendBuffer();
+  
+  score++;
+  step = !step;
+  delay(100); // Game speed
+}
 
 
 
