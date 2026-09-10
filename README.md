@@ -333,6 +333,8 @@ Modular subsystem design built to integrate with the rover's broader chassis, ro
 
 This subsystem was one of the most rewarding parts of the build — it's a small-scale example of the kind of automated science payload used on real planetary rovers, and getting the timing, safety interlocks, and sensor calibration right taught me a lot about robust embedded systems design.
 
+https://drive.google.com/drive/folders/1QmFFqN8Sg-0dtF8WG9kC8Mo-zma0Cf8U?usp=sharing
+
 More to come on the 5-DOF robotic arm and full rover integration 👇
 
 <img width="1120" height="837" alt="Screenshot 2025-10-06 at 3 32 34 PM" src="https://github.com/user-attachments/assets/3b8e8643-de4f-4da1-8432-7495bd5832f0" />
