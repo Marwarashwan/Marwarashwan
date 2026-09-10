@@ -1163,5 +1163,21 @@ void loop() {
 
 ```
 
+# motion sensor self-moving shopping carts
+A self-moving shopping cart motion sensor is plausible, with advanced sensors, motors, and
+Arduino, transforming the retail experiences. These cutting-edge carts relieve customers of the
+strain of pushing bulky trolleys and manoeuvring through busy aisles by self-navigating through
+retail aisles. This allows customers to browse the store hands-free and effortlessly.
+These self-moving carts empowers people with restricted mobility to move around the
+store more easily and freely by doing away with the need to manually push a cart. Personalized
+shopping experiences are made possible by the integration of cutting-edge technology like a
+ultrasonic sensors.
+All things considered, the introduction of self-moving shopping carts is a innovated
+technological development that will enhance the consumer experience. These cutting-edge carts
+have the potential to completely change how we buy and engage with retail sectors by offering a
+smooth, practical, and customized shopping experience.
 
+## schematic diagram
+<img width="1088" height="842" alt="Screenshot 2026-09-10 at 1 46 21 pm" src="https://github.com/user-attachments/assets/b50a34a4-0503-4c25-b0f5-e11d8ca00875" />
 
+https://drive.google.com/drive/folders/1SBS-S3K57Jty7i8Vr9zJW6vQo3lJBnC7?usp=sharing
