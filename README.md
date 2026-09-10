@@ -1023,6 +1023,7 @@ https://drive.google.com/drive/folders/1ceytcDmY1UAn5KLfDPXkrkF4eAEmAagk?usp=dri
 
 
 ## THE CODE: USING OLED
+```cpp
 #include <U8g2lib.h>
 #include <Wire.h>
 
@@ -1158,8 +1159,7 @@ void loop() {
   delay(100); // Game speed
 }
 
-
-
+```
 
 
 
