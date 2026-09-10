@@ -365,18 +365,21 @@ manipulators are severely restricted in their ability to perform missions, which
 impacts mission efficiency and scientific return. These constraints are a result of a
 combination of environmental stresses, mechanical constraints, and telecommunication
 constraints:
+
 ● Dexterity and Manipulation Performance is poor: Traditional robotic arms tend to
 be physically inflexible and less intelligent in terms of manipulation of a variety of
 morphologies that are not calibrated. High-level algorithms and good mechanical
 dexterity are needed to process geological samples that are not regularly shaped.
 These are essential, if not for the autonomous operation, then certainly for the
 operation as a whole.
+
 ● Tight Onboard Resource Bottlenecks: The planetary rover payload is constrained by
 launch vehicle limits. They are powered by a limited supply of electrical power from
 either a restrained solar array or a Radioisotope Thermoelectric Generator (RTG).
 Each computational loop, each movement of actuators, has to be as energy intensive
 as possible so that the rovers' power reserves are not depleted, and there must be a
 high level of fault tolerance, as manual repair is absolutely unfeasible.
+
 ● Extreme Communication Delay: Due to the finite speed of light, communication to
 and from a deep space mission is constrained by its significant round-trip
 communication delays. For Mars, this latency is up to 20 minutes, making real-time
@@ -386,6 +389,7 @@ error-recovery mechanisms on board.
 
 All these constraints must be met as a system that is coordinated, mechanical in design, smart
 in control logic, and environmentally compliant.
+
 ## 1.3 Scope Of Simulation and Development
 One of the most important steps in this process of engineering development is the link
 between mathematical theory and actual deployment, which is accomplished via
@@ -401,11 +405,13 @@ multiple platforms, with a lightweight, deterministic development pipeline. Robo
 an elegant, mathematically precise platform to model the manipulator kinematics, define
 workspace envelopes, and visualize interaction with the targets without undue computational
 burden.
+
 ● Software control loop, trajectory planning, coordinate transformations, and data
 tracking are coded in Python using the VS Code editor. This environment works in
 concert with the RoboDK API via a local TCP/IP port to visually test joint paths,
 simulate planetary conditions, and prevent possible collisions of the hardware before
 it is physically installed.
+
 ● The second simulation component, the hardware prototyping vector, is a direct design
 that puts the logic directly into low-level embedded hardware, which is quite different
 from the high-level simulation frameworks that isolate logic within virtual
