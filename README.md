@@ -342,8 +342,9 @@ More to come on the 5-DOF robotic arm and full rover integration 👇
 
 
 
-Case Study #4:🦾⚙️ 5DOF SPACE ROVER ROBOTIC ARM 
-1.1 Mission context
+# Case Study #4:🦾⚙️ 5DOF SPACE ROVER ROBOTIC ARM 
+
+## 1.1 Mission context
 Mars and the Moon are among the most exciting planetary environments that humanity is
 exploring. The key to these missions are surface-dwelling mobile platforms, or
 medium-to-large exploration rovers similar to Curiosity and Perseverance. These vehicles
@@ -356,7 +357,7 @@ mesh. The main task for the arm is to make fine multi-axis manipulations, travel
 complicated kinematic workspace and precision sampling. These involve removing abrasive
 dust layers, collecting irregular shapes of geology (regolith samples), and placing selected
 artifacts in a safe position on the rover to be analyzed on board.
-1.2 Problem Statement
+## 1.2 Problem Statement
 Although dramatic advances have been made in space robotics, current planetary
 manipulators are severely restricted in their ability to perform missions, which negatively
 impacts mission efficiency and scientific return. These constraints are a result of a
@@ -383,7 +384,7 @@ error-recovery mechanisms on board.
 
 All these constraints must be met as a system that is coordinated, mechanical in design, smart
 in control logic, and environmentally compliant.
-1.3 Scope Of Simulation and Development
+## 1.3 Scope Of Simulation and Development
 One of the most important steps in this process of engineering development is the link
 between mathematical theory and actual deployment, which is accomplished via
 computational validation. Hyper-realistic physics rendering software suites, such as NVIDIA
@@ -413,7 +414,7 @@ actuators, and positional feedback sensors of a lab-scale prototype. This way th
 system won't violate the strict computations, efficiency, and power conservation
 requirements of a real space rover.
 
-Results, Final Design & software implementation
+## Results, Final Design & software implementation
 A 5-DOF robotic arm is modeled in SolidWorks and displayed in an extended position. With
 a rise from the base to the tip:
 The first joint allows the entire arm to pivot side to side and is attached to a flat mounting
