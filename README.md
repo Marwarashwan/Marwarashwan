@@ -1181,3 +1181,96 @@ smooth, practical, and customized shopping experience.
 <img width="1088" height="842" alt="Screenshot 2026-09-10 at 1 46 21 pm" src="https://github.com/user-attachments/assets/b50a34a4-0503-4c25-b0f5-e11d8ca00875" />
 
 https://drive.google.com/drive/folders/1SBS-S3K57Jty7i8Vr9zJW6vQo3lJBnC7?usp=sharing
+
+
+# Raspberry Pi & Edge IoT Automation Lab
+A one-board computing lab for embedded Linux automation, GPIO control of hardware, integration with the cloud and cross-platform telemetry for the game engine. This project showcases the full application of edge computing, including automatic OS configuration, real-time hardware interfacing; cloud data deployment, and the real-time serial integration with 3D game engines.
+
+## 1. Technical Overview
+For interfacing analog sensor suite, Raspberry Pi 4 / 3B+, Arduino Uno / ESP32, camera module (CSI/USB), PIR motion sensors and LEDs are required.
+
+Operating System & Scripting: Raspberry Pi OS (headless setup with automatic scripts in Bash/Python), SSH remote management.
+
+Backend & Web Infrastructure: Python 3, RPi.GPIO / gpiozero, Flask web framework, Open Source Computer Vision (OpenCV).
+
+Cloud & IoT Integration: AWS IoT Core (MQTT over TLS) and ThingSpeak REST API for sensor telemetry.
+
+Game Engine Telemetry: Real-time serial interface (pySerial / C scripts) and bridging Arduino/Raspberry Pi physical sensors right into the gameplay of the Game Engines: Unity / Unreal.
+
+In addition to the key modules, there are also practical activities.
+Installing an OS automatically and using a headless OS.
+Automated set-up of environment with Python and Shell programming. Sets system parameters, activates I2C/SPI interfaces, sets up static IP routing and sets up secure headless SSH connections without external peripherals.
+
+## 2. GPIO Hardware Control.
+Low-level (hardware) interfacing with python. Includes pulse-width modulation (PWM) and digital output control for LEDs and input reading of a state, and real-time signal timing through the Raspberry Pi GPIO headers.
+
+## 3. Deployment to Edge Web Server.
+A light-weight Flask web app right on the Raspberry Pi. Offers a browser-based user interface to monitor, switch and control physical devices remotely within local network.
+
+## 4. A security camera system using the number π.4. Pi-based Security Camera System.
+An edge surveillance system using Pi Camera Module and Python. Uses motion detection algorithms to record video streams, log events, and automatically send live video stream via Flask web interface.
+
+## 5. Data Visualization using Grafana & AWS/Elasticstack Integration
+Integration of IoT cloud with MQTT and HTTPS protocols. Pushes physical sensor metrics to ThingSpeak for real-time data visualization and pushes the encrypted states of the devices to AWS IoT Core for scalable cloud processing.
+
+## 6. 3D Pipeline Building (Blender / 3D Max)
+Physical to Virtual-I/O bridge connecting external microcontroller sensors with 3D game environments. Physical inputs (such as motion sensors, potentiometers, switches) are mapped to variables within the game, allowing for hardware-based interaction in the game within realtime, for example by using these features to control variables inside the game.
+
+## 7. The three-part series concludes with a look at debugging, scalability and market trends.
+System Diagnostics: System loggers for CPU performance, memory usage, thermal throttling and hardware interrupt handling.
+
+Scalability Path: Move from a prototype board into field-deployed edge nodes through container based (Docker) deployment and centralized device management.
+
+Industry context: Covers real-world developments in Edge AI, Industrial IoT/IIoT, smart home automation and hybrid physical-digital experiences/phygital/simulators.
+
+```cpp
+from flask import Flask, render_template_string, request
+import RPi.GPIO as GPIO
+
+app = Flask(__name__)
+
+# Pin Configuration
+LED_PIN = 18
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(LED_PIN, GPIO.OUT)
+
+HTML_TEMPLATE = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raspberry Pi Edge Controller</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #1e1e2e; color: #fff; }
+        .btn { padding: 15px 30px; font-size: 18px; border: none; border-radius: 5px; cursor: pointer; margin: 10px; }
+        .on { background-color: #4CAF50; color: white; }
+        .off { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Edge Automation Dashboard</h1>
+    <p>Status: <strong>{{ status }}</strong></p>
+    <a href="/led/on"><button class="btn on">Turn ON</button></a>
+    <a href="/led/off"><button class="btn off">Turn OFF</button></a>
+</body>
+</html>
+"""
+
+@app.route("/")
+def index():
+    state = "ON" if GPIO.input(LED_PIN) else "OFF"
+    return render_template_string(HTML_TEMPLATE, status=state)
+
+@app.route("/led/<action>")
+def led_action(action):
+    if action == "on":
+        GPIO.output(LED_PIN, GPIO.HIGH)
+    elif action == "off":
+        GPIO.output(LED_PIN, GPIO.LOW)
+    return index()
+
+if __name__ == "__main__":
+    try:
+        app.run(host="0.0.0.0", port=5000, debug=False)
+    finally:
+        GPIO.cleanup()
+```
