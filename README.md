@@ -318,7 +318,7 @@ Developed the architectural flowchart for the GAITH Innovation Framework, defini
 GAITH is not just a robot — it is a step toward feeding cities sustainably in a water-scarce world.
  
 
-Case Study #3: 🔬🚀 Science Box: Automated Sample Collection for our Space Rover
+# Case Study #3: 🔬🚀 Science Box: Automated Sample Collection for our Space Rover
 
 As part of our Space Rover project (alongside a custom-built 5-DOF robotic arm), I designed and built the Science Box — an autonomous drilling and sample-collection subsystem that mimics real planetary exploration hardware.
 
