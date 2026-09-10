@@ -272,15 +272,15 @@ https://www.canva.com/design/DAHJHUYjjDU/Q_skyJPyaM1heRoFM90Q0w/edit
 <img width="1024" height="1536" alt="WhatsApp Image 2025-08-16 at 17 50 09" src="https://github.com/user-attachments/assets/794062bd-9ea8-43bb-b6cb-79331b1648a4" />
 
 
-Case Study #2: GAITH — Grounded Automation Intelligent Technology Harvesting WRO 2025 — Future Innovators (Senior)
+# Case Study #2: GAITH — Grounded Automation Intelligent Technology Harvesting WRO 2025 — Future Innovators (Senior)
  
-The Problem: Global Water Crisis
+## The Problem: Global Water Crisis
  
 Water is becoming the world's most precious resource. By 2030, humanity faces a projected 40% shortfall in freshwater as demand rises and climate change worsens scarcity.
  
 Agriculture consumes 70% of global freshwater, yet up to 50% is lost through outdated irrigation — trillions of liters wasted each year. Without smarter farming systems, food security in expanding cities will be at risk worldwide.
  
-The Solution — GAITH
+## The Solution — GAITH
  
 GAITH is a multifunctional urban farming robot designed to tackle water scarcity and food security challenges. It combines IoT sensors, machine learning, and automation to optimize irrigation, monitor soil health, and support efficient crop growth — making farming smarter and more sustainable in urban environments.
  
