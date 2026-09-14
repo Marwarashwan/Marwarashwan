@@ -1180,7 +1180,7 @@ smooth, practical, and customized shopping experience.
 ## schematic diagram
 <img width="1088" height="842" alt="Screenshot 2026-09-10 at 1 46 21 pm" src="https://github.com/user-attachments/assets/b50a34a4-0503-4c25-b0f5-e11d8ca00875" />
 
-https://drive.google.com/drive/folders/1SBS-S3K57Jty7i8Vr9zJW6vQo3lJBnC7?usp=sharing
+https://drive.google.com/drive/folders/1vMEcKopv4xDqmv40k_ApJpQxSIRGCSjE?usp=sharing
 
 
 # Raspberry Pi & Edge IoT Automation Lab
