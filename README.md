@@ -1476,5 +1476,16 @@ void gameWin() {
 
 https://drive.google.com/drive/folders/12FowygUPu44nWeBRfpdcKDznqO_vq1hH?usp=drive_link
 
+# SMALL DEMOS AND PROPOSALS
+## EGA WEBSITE ENHANCEMENTS
+Managed and delivered various STEM-based initiatives in the UAE, including AI, robotics, sustainability and entrepreneurship; managed scope, timelines and stakeholder engagement from planning to execution.
+
+Concurrently coordinated end-to-end project life cycles for multiple projects, apply structured project management practices for on-time delivery and quality through the technical and educational programs
+
+https://drive.google.com/drive/folders/1VXCQt6_N0C5eDBFyvMH5nesWOBRlNz6n?usp=drive_link
+<img width="400" height="393" alt="final website improvemnets prototype" src="https://github.com/user-attachments/assets/d9077899-066c-4c68-8192-775c08e2bf4d" />
+<img width="400" height="325" alt="final prototype" src="https://github.com/user-attachments/assets/3cde7fb6-6a30-4596-9784-54def105013c" />
+
+
 
 
