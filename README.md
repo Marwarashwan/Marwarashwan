@@ -1487,5 +1487,9 @@ https://drive.google.com/drive/folders/1VXCQt6_N0C5eDBFyvMH5nesWOBRlNz6n?usp=dri
 <img width="400" height="325" alt="final prototype" src="https://github.com/user-attachments/assets/3cde7fb6-6a30-4596-9784-54def105013c" />
 
 
+#HIT (Hybrid Intersection Technology) — RTA Mobility Innovation Challenge
+HIT introduces a new decentralized AI Edge Mesh layer on top of Dubai's current traffic signals network that reduces emergency delays, slow centralized responses, snake-effect congestion and wasted green time. Each of the smart edge boxes was equipped with a camera, speed sensor, AI processor, Safety Kernel, mesh module and V2I receiver, which were installed on existing signal poles and communicate with each other locally in real-time while simultaneously reporting to the Central Hub for oversight. HIT is not meant to supplant RTA's SCOOT/UTC systems; it's meant to augment them, reducing the amount of data being loaded at the hub level and permitting decisions at the junction level and prioritizing emergency corridors to be made faster. The proposed location is a simulated pilot in a 3–5 junction corridor, requesting permission to do so.
+<img width="1010" height="567" alt="PHOTO-2026-07-05-13-31-06" src="https://github.com/user-attachments/assets/5ab6e79e-f53c-4eb7-b87a-a258f121ccd1" />
+
 
 
