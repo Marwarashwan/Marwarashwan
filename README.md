@@ -1,4 +1,4 @@
-# Hi, I'm Marwa Rashwan 👋 👩🏼‍🚀 👷🏻‍♀️ 💻
+# Hi, I'm Marwa Rashwan ⚙️ 👩🏼‍🚀 👷🏻‍♀️ 💻
 ### Mechatronics Engineer & Technical Project Manager
 
 - 🎓 Fresh Graduate in Electrical Engineering (Mechatronics) from Canadian University Dubai
